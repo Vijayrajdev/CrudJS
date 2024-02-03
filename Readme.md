@@ -34,7 +34,6 @@ git clone https://github.com/dprakash2101/CrudJS.git
 ```
 2. Usage
 ```bash
-cd CRUDJs
 npm install
 ```
 3. Replace the URL in app.js with your URL in MongoDB.
