@@ -37,10 +37,31 @@ git clone https://github.com/your-username/employee-data-management.git
 cd CRUDJs
 npm install
 ```
-3. Run : The application will be accessible at http://localhost:9000.
+3. Replace the URL in app.js with your URL in MongoDB.
+```javascript
+const express = require('express')
+const { default: mongoose } = require('mongoose')
+const mangoose = require('mongoose')
+const url = 'mongodb://localhost:27017/Employee' //Replace this URL with your connection string
+const app= express()
+mongoose.connect(url,{useNewUrlParser:true})
+const con = mongoose.connection
+con.on('open',() => {
+    console.log('Connected............')
+})
+app.use(express.json())
+const employeesRouter = require('./routes/employees')
+app.use('/employees',employeesRouter)
+app.listen(9000,() => {
+    console.log("Server is started.......")
+})
+```
+
+5. Run: The application will be accessible at http://localhost:9000.
 ```bash
 nodemon start
 ```
+
 ## Endpoints
 1. GET http://localhost:9000/employees/ : Get all employees
 2. GET http://localhost:9000/employees/:id : Get employee by ID
